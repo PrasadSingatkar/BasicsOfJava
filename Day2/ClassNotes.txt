@@ -1,0 +1,179 @@
+Type Conversion refers to changing one dat type into another
+
+1. Widening (Implicit) conversion - Smaller type to larger type
+2. Narrowing (Explicit) conversion - Larger type to smaller type
+
+# Widening (Implicit) conversion:
+ 
+public class Main{
+    public static void main(String[] args){
+        int intVal=100;
+        double doubleVal=intVal;
+        
+        System.out.println("Integer Value : "+intVal);
+        System.out.println("Double Value : "+doubleVal);
+    }
+}
+
+intVal is int -> 4 bytes
+doubleVal is double -> 8 bytes
+
+Widening order
+byte -> short -> int -> long -> float -> double
+char -> int -> long -> float -> double
+
+
+# Narrowing (Explicit) Conversion
+
+public class Main{
+    public static void main(String[] args){
+        double doubleVal = 100.99;
+        int intVal = (int)doubleVal;
+        
+        System.out.println("Double Value : "+doubleVal);
+        System.out.println("Integer Value : "+intVal);
+    }
+}
+
+Narrowing Order
+
+double -> float -> long -> int -> short -> byte
+
+Key Differences:
+
+1. Widening(Implicit)
+  - No data loss
+  - No explicit cast needed
+  - Happens Automatically
+
+2. Narrowing(Explicit)
+  - can lead to data loss(e.g. truncation of decimals)
+  - requires explicit casting
+  - must be handled carefully as it can cause incorrect results
+
+===================================================================================
+1.If-else
+
+Syntax: 
+if(condition){
+   // code to be executed if condition is true
+}else {
+  // code to be executed if condition is false
+}
+------------------------------------------------------------
+if(condition){
+   // code to be executed if condition is true
+}else if(condition){
+  // code to be executed if condition is false
+}else {
+  // code to execute if none of the conditions are true
+}
+===================================================================================
+Example:
+import java.util.Scanner;
+
+
+public class Main{
+    public static void main(String[] args){
+        Scanner scanner = new Scanner(System.in);
+        System.out.println("Enter your age : ");
+        int age = scanner.nextInt();
+        
+        if(age < 13){
+            System.out.println("Child");
+        }else if (age >= 13 && age < 20){
+            System.out.println("Teenager");
+        }else if (age >= 20 && age<60){
+            System.out.println("Adult");
+        }else {
+            System.out.println("Senior");
+        }
+    }
+}
+========================================================================
+# Switch Statement
+
+Syntax : 
+switch(variable) {
+case value1:
+      //code block
+      break;
+
+case value2:
+      //code block
+      break;
+
+default:
+      // code block
+}
+========================================================================
+import java.util.Scanner;
+
+
+public class Main{
+    public static void main(String[] args){
+        Scanner scanner = new Scanner(System.in);
+        System.out.println("Menu : ");
+        System.out.println("1. Pizza");
+        System.out.println("2. Burger");
+        System.out.println("3. Pasta");
+        System.out.println("4. Exit");
+        
+        System.out.println("Enter your choice : ");
+        
+        int choice = scanner.nextInt();
+        switch(choice){
+            case 1:
+                System.out.println("You ordered pizza");
+                break;
+            case 2:
+                System.out.println("You ordered Burger");
+                break;
+            case 3:
+                System.out.println("You ordered Pasta");   
+                break;
+            case 4:
+                System.out.println("Thank you for coming");  
+                break;
+            default:
+                System.out.println("Invalid choice"); 
+        }
+    }
+}
+==============================================================================
+# Loops:
+
+For loop:
+Syntax:
+for(initialization; condition; update)
+{
+   // code to be executed
+}
+---------------------------------------------------------------
+While Loop:
+while(condition){
+  // code to be executed
+}
+---------------------------------------------------------------
+Do-While Loop:
+do{
+   //code to be executed
+}while(condition);
+---------------------------------------------------------------
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
