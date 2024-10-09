@@ -1,0 +1,140 @@
+One-Dimensional Arrays:
+
+Syntax:
+datatype[] arrayName = new datatype[size];
+
+Example:
+int[] marks = new int[5]; // Array of integers with 5 elements
+
+Initialization: Arrays can also be initialized
+int[] marks = {85, 90,75, 88,95} // Array initialized with values
+
+Example of declaring, initialization and accessing those elements
+int firstMark = marks[0]; // Accesses the first element
+
+If e want to update a value
+marks[2] = 80; // changes the third element to 80
+
+CODE:
+class HelloWorld {
+    public static void main(String[] args) {
+       int[] numbers = new int[5];
+       numbers[0] = 10;
+       numbers[1] = 20;
+       numbers[2] = 30;
+       numbers[3] = 40;
+       numbers[4] = 50;
+       for(int i=0; i<numbers.length; i++){
+           System.out.println("Element at index " + i + ":" + numbers[i]);
+       }
+    }
+}
+
+==================================================================================
+Multi-Dimensional Arrays 
+Syntax: 
+datatype[][] arrayName = new datatype[rows][columns];
+
+Example : To create a 3x3 matrix (3 rows and 3 columns );
+ int[][] matrix =  new int [3][3];
+
+Direct Initialization: 
+int[] [] matrix = {
+{1,2,3},
+{4,5,6},
+{7,8,9}
+};
+
+1 2 3
+4 5 6
+7 8 9
+
+Accessing an element: 
+to access second row and third column
+ 
+int value = matrix[1][2];
+
+Example:
+class HelloWorld {
+    public static void main(String[] args) {
+       int[][] matrix = new int[3][3];
+       //This will create a 3x3 matrix
+       matrix[0][0] = 1; // Initialized
+       matrix[0][1] = 2;
+       matrix[0][2] = 3;
+       matrix[1][0] = 4;
+       matrix[1][1] = 5;
+       matrix[1][2] = 6;
+       matrix[2][0] = 7;
+       matrix[2][1] = 8;
+       matrix[2][2] = 9;
+       
+       for(int i=0; i<3 ;i++){
+           for(int j=0; j<3;j++){
+               System.out.print(matrix[i][j] + "  ");
+           }
+           System.out.println();
+       }
+       
+    }
+}
+=====================================================================================
+String and String Class
+Example : 
+String example = "Hello, World";
+
+Strings are immutable, which means that once a string object is created, its value cannot be changed.
+
+Two ways to initialize a String:
+
+1. Using string literal:
+
+String str1 = "example";
+
+2. Using the new Keyword:
+String str2 = new String("example");
+
+Methods for string class:
+1.length() : Returns the length of the string.
+  int length = str1.length();
+
+2.charAt(int index): Returns the character at the specified index.
+  char ch= str1.charAt(0);
+
+3.substring(int beginIndex,int endIndex) ; Returns a substring from the string
+ String sub = str1.substring(0,4);
+
+4.equals(String anotherString): compares two strings for equality
+  boolean isEqual = str1.equals("example");
+
+5.toLowerCase() and toUpperCase() : Converts the string to lowercase or uppercase
+String lower = str.toLowerCase(); // Converts to "?"
+String upper = str.toUpperCase(); // Converts to "?"
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
