@@ -1,0 +1,79 @@
+Database
+
+What is Database?
+A database is a collection of data that is oraganised and stored electronically in a computer system.
+
+Why Database?
+1. Organizing information :
+Databases help to keep information organized and easy to find. If we need to locate a specific record, we can do it very quickly.
+
+2. Handling Large amounts of data
+For businesses and organizations with a llot of information , databases are essential.
+
+3. Ensuring Data Accuracy
+Databases help to ensure that information is correct and up-to-date, reducing mistakes and duplication.
+
+Types of Databases:
+---------------------------------------------------------------------------
+1. Relational Database:
+Relational databases store data in tables that are related to each other through common fields.
+They use structured query language(SQL) to manage and query the data.
+
+Characteristics:
+-data is oraganized in into rows and columns
+-Tables can be linked together using relationships
+-data integrity and accuracy are maintained through constraints and rules
+
+Example:
+MySQL: Often used for web application
+
+2. NoSQL database*
+3. In-memory database*
+4. NewSQL database*
+---------------------------------------------------------------------------------
+SQL(Structured Query Language)
+
+-Its like a language we use to talk with our database
+-When we want to get information from or put information into the database.
+--------------------------------------------------------------------------------
+DBMS
+ACID
+
+A - Atomicity : 
+Every transaction should be executed as a single unit, means all the steps should happen or none should happen.
+
+C - Consistency
+After every transaction data should be in corect state
+
+I - Isolation
+Any user read data when logs in should read the same data
+
+D - Durability
+Longer period of times there should be consistency and correctness in data.
+
+------------------------------------------------------------------------------------------------------------------------------------------
+1. Creating our first database
+  CREATE DATABASE flynaut;
+  DROP DATABASE flynaut;
+
+2. Creating our first table
+    CREATE TABLE EMP
+                ( 
+                     EMPNO INT(4) NOT NULL PRIMARY KEY,
+                     ENAME varchar(20),
+                     JOB varchar(20),
+                     MGR INT(4),
+                     HIREDATE DATE,
+                     SAL DECIMAL(7,2),
+                     COMM Decimal(7,2),
+                     DEPTNO INT(4)
+               );
+3.Inserting values into table
+     INSERT INTO EMP VALUES 
+              ( 7369, 'SMITH','CLERK', 7902, STR_TO_DATE('17-DEC-1980','%d-%b-%Y'), 800, NULL, 20 );
+
+
+
+
+
+
