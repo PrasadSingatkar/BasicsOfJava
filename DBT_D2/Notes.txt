@@ -1,0 +1,156 @@
+BasicsOfJava
+-------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+SQL datatypes:
+-------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+Categories of datatypes:
+1. String Datatype
+2. Numeric 
+3. Date & Time 
+-------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+1. String Datatype
+varchar 
+char
+text
+binary
+BLOB
+MEDIUMTEXT
+LONGTEXT
+ENUM
+SET
+-------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+2. Numeric
+BIT
+INT
+BIGINT
+FLOAT
+DOUBLE 
+DECIMAL
+BOOLEAN
+-------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+3. Date & Time 
+Date YYYY-MM-DD
+DateTime YYYY-MM-DD hh:mm:ss
+Time hh:mm:ss
+
+-------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+Types of SQL Commands
+
+DDL (Data Definition Language) : create, alter, truncate, drop
+DQL (Data Query Language )     : select 
+DML (Data Manipulation Languge) : insert, update, delete
+DCL ( Data Control Language)   : Grant and Revoke
+TCL (Transaction Control language) : commit, rollback, savepoint
+
+-------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+Primary Key : 
+Minimal set of attributes which identifies the row uniquely
+Ex. RoomNo,RoomLocation, RoomCharges, dateOfBooking, emailID
+
+Foreign Key : 
+A foreign key is a column in a table that refers to the primary key in another table
+-------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+Constraints
+What?
+Constraints in MySQL are rules applied to columns in a table to ensure integrity, accuracy and reliability of the data.
+Constraints prevent invalid data from being entered into the database.
+-------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+1.NOT NULL
+
+What?
+The NOT NULL constraint ensures that a column cannot have a null value. In other words, it requires that a column must always have  a value when a record is inserted.
+
+Ex.
+CREATE TABLE EMP
+                ( 
+                     EMPNO INT(4) NOT NULL PRIMARY KEY,
+                     ENAME varchar(20),
+                     JOB varchar(20),
+                     MGR INT(4),
+                     HIREDATE DATE,
+                     SAL DECIMAL(7,2),
+                     COMM Decimal(7,2),
+                     DEPTNO INT(4)
+               ); 
+-------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+2. Primary Key
+-------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+3. Foreign Key
+-------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+4.CHECK
+What?
+The CHECK constraint ensures that all the values in a column meet the specific condition. It restricts the values that can be entered into a column based on a rule we define.
+Ex.
+CREATE TABLE EMP(
+     EMPNO INT PRIMARY KEY,
+     ENAME VARCHAR(50),
+     JOB VARCHAR(50),
+     SAL DECIMAL(10,2) CHECK (SAL > 0)     //Salary must be greater than 0
+)
+-------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+5.DEFAULT
+what?
+The default constraint provides a default value for a column if no value is specified during the insert operation.
+
+Ex.
+CREATE TABLE EMP(
+     EMPNO INT PRIMARY KEY,
+     ENAME VARCHAR(50),
+     JOB VARCHAR(50),
+     SAL DECIMAL(10,2) DEFAULT 1000          --Default salary is 1000
+)
+-------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+SELECT :
+Example:
+Retrieve the employees names(ENAME) and their salaries (SAL) from emp table
+
+SELECT  * FROM EMP;                  (To retrieve entire table)
+SELECT ENAME, SAL FROM EMP;
+-------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+Operators:
+Arithmetic Operator:+,-,*,/
+relational Operator:=, !=, >, <
+Logical Operator: AND, OR, NOT
+-------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+Where clause:
+TheWHERE clause is used to filter records. It allows you to specify conditions that data must meet to be included in the result set.
+
+Example: 
+Q - Retrieve the employee names and job titles whose job is 'MANAGER'.
+SELECT ENAME, JOB FROM EMP WHERE JOB = 'MANAGER';
+-------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+Q - Select the employees number, name and salary from emp table.
+-> SELECT EMPNO, ENAME, SAL FROM EMP;
+
+Q - Select the employees names and salaries for those whose job is 'SALESMAN'.
+-> SELECT ENAME,SAL FROM EMP WHERE JOB = 'SALESMAN'; 
+
+Q - Select the employees names, job titles and salaries fo those working in department number 30.
+-> SELECT ENAME, JOB, SAL FROM EMP WHERE DEPTNO = 30;
+-------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+Assignment: 
+-------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+Select the employee names and department numbers of employees with a salary greater than 2000.
+
+Select the employee number, job, and salary of employees whose job is 'CLERK'.
+
+Select the employee names and commission where the commission is not null.
+
+Select the employee names and job titles where the job is 'MANAGER'
+
+Select the employee names and salaries where the salary is greater than 1500.
+
+Select the employee names and hire dates for employees hired between April 1, 1981, and May 1, 1981.
+
+Select the employee names and salaries where commission is not null (i.e., employees who receive a commission).
+
+Select the employee names where the name starts with the letter 'S'.
+
+Select the employee names and job titles where the job is either 'MANAGER' or 'CLERK'.
+
+Select the employee names where the salary is not equal to 5000.
+
+Select the employee names and hire dates where the hire date is greater than or equal to December 1, 1981.
+
+Select the employee names and salaries where the salary is between 1000 and 3000.
+
+Select the employee names, job titles, and salaries where the job is 'SALESMAN' and the salary is greater than 1200.
