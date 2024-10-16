@@ -1,0 +1,162 @@
+Q - Select the employee names and hire dates for employees hired between April 1, 1981, and May 1, 1981.
+-> SELECT ENAME, HIREDATE
+    FROM EMP
+    WHERE HIREDATE BETWEEN '1981-04-01' AND '1981-05-01';
+
+Q - Select the employee names and salaries where commission is not null (i.e., employees who receive a commission).
+-> SELECT ENAME, SAL 
+    FROM EMP
+    WHERE COMM IS NOT NULL;
+
+Q - Select the employee names where the name starts with the letter 'S'.
+-> SELECT ENAME 
+    FROM EMP
+    WHERE ENAME LIKE 'S%';
+
+Q - Select the employee names and job titles where the job is either 'MANAGER' or 'CLERK'.
+->Select ename, job 
+    from emp 
+    where job in ('MANAGER' , 'CLERK');
+
+Q - Select the employee names where the salary is not equal to 5000.
+-> SELECT ENAME 
+    FROM EMP
+    WHERE SAL != 5000;
+
+Q - Select the employee names and hire dates where the hire date is greater than or equal to December 1, 1981.
+-> SELECT ENAME, HIREDATE 
+     FROM EMP
+     WHERE HIREDATE >= '1981-12-01';
+
+Q - Select the employee names, job titles, and salaries where the job is 'SALESMAN' and the salary is greater than 1200.
+-> SELECT ENAME, JOB, SAL 
+    FROM EMP 
+    WHERE JOB = 'SALESMAN' AND SAL > 1200;
+--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+1. BETWEEN.......AND 
+WHAT?
+The Between...and operator is used to select values within a given range.
+The range can be numeric, textual or date values.
+it includes both the starting values and ending values which we specify.
+
+SYNTAX:
+SELECT column_name(s)
+FROM table_name
+WHERE column_name BETWEEN value1 AND value2;
+
+EXAMPLE:
+Q - Select the employee names and hire dates for employees hired between April 1, 1981, and May 1, 1981.
+-> SELECT ENAME, HIREDATE
+    FROM EMP
+    WHERE HIREDATE BETWEEN '1981-04-01' AND '1981-05-01';
+
+Ex.Finding products priced between 10 and 50.
+     Getting students with grades between 80 - 90.
+--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+2. IN 
+WHAT?
+The IN operator allows us to specify multiple values in a WHERE clause. 
+It filters the resultset to include only the rows where the column's value matches any value in a specified list.
+
+SYNTAX:
+SELECT column_name(s)
+FROM table_name
+WHERE column_name IN (value1,value2, ......)
+
+Ex.Q - Select the employee names and job titles where the job is either 'MANAGER' or 'CLERK'.
+->  Select ename, job 
+      from emp 
+      where job in ('MANAGER' , 'CLERK');
+--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+3. IS NULL
+What?
+The IS NULL operator is used to test for empty values(NULL values) in database.
+NULL represents missing or unknown data.
+
+SYNTAX:
+SELECT column_name(s)
+FROM table_name
+WHERE column_name IS NULL;
+
+Example: Selecting employees without a commission
+           -> SELECT ENAME, COMM
+                FROM EMP
+                WHERE COMM IS NULL;
+
+EX. - Finding orders without a ship date
+--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+4. LIKE 
+What?
+The LIKE operator is used in a WHERE clause to search for a specified pattern in a column.
+The % wildcard represents zero or more characters, and _ represents a single character.
+
+Example:
+Q - SELECTING EMPLOYEE NAMES STARTING WITH 'S'.
+SELECT ENAME
+FROM EMP
+WHERE ENAME LIKE 'S%';
+
+EX. ENAME starts with M
+SELECT ENAME
+FROM EMP
+WHERE ENAME LIKE 'M%';
+
+EX. ENAME ENDS WITH M
+SELECT ENAME
+FROM EMP
+WHERE ENAME LIKE '%M';
+
+Ex. To find all employees with name has E somewhere in the name
+SELECT ENAME
+FROM EMP
+WHERE ENAME LIKE '%E%';
+
+Ex. L at 3rd position and R at last position
+SELECT ENAME
+FROM EMP
+WHERE ENAME LIKE '__L%R';
+
+Ex. Selecting employees with 5 letter name
+SELECT ENAME
+FROM EMP
+WHERE ENAME LIKE '_____';
+--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+5. ORDER BY
+What?
+The order by clause is used to sort the result set of a query by one or more columns, either in ascending(ASC) or descending (DESC) order.
+
+
+Examples:
+1. Selecting employees ordered by salary ascending:
+   SELECT ENAME,SAL
+   FROM EMP
+   ORDER BY SAL ASC;
+
+2. Selecting employees ordered by salary descending:
+   SELECT ENAME,SAL
+   FROM EMP
+   ORDER BY SAL DESC;
+--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+6. LIMIT
+What?
+The LIMIT clause is used to constraint the number of rows returned by a query.
+It specifies the maximum number of records to return.
+
+SYNTAX:
+SELECT column_name(s)
+FROM table_name
+LIMIT number_of_records;
+
+Example: 
+Selecting the top 5 highest-paid employees:
+SELECT ENAME, SAL
+FROM EMP
+ORDER BY SAL DESC
+LIMIT 5;
+--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+DISTINCT*
+FUNCTIONS IN DATABASE*
+-Single Row functions*
+-Aggregate functions*
+
+
