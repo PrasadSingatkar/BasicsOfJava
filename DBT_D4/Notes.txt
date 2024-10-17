@@ -1,0 +1,69 @@
+ - DISTINCT keyword
+What?
+It is used SQL to remove duplicate records from result set.
+It returns only unique values.
+
+
+SYNTAX - 
+SELECT DISTINCT column1, column2
+FROM table_name;
+
+EXAMPLE:
+To find distinct job roles in the company.
+-> SELECT DISTINCT JOB
+    FROM emp;
+
+Explanation: This query lists all unique job titles, ignoring duplicates.
+--------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+Aggregate Functions in SQL 
+Aggregate functions in SQL perform a calculation on a set of vales and return a single result.
+1. COUNT() - returns the number of rows 
+2. SUM() - returns the total sum of a numeric column
+3. AVG() - Returns the average value of a numeric column
+4. MIN() - Returns the minimum value of a column
+5. MAX() - Returns the maximum value of the column
+--------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+1. COUNT() - returns the number of rows 
+Ex. SELECT DEPTNO, COUNT(*) AS num_employees
+      from emp
+      group by deptno;
+
+# Group By clause 
+What?
+The Group By clause is used to group rows that have the same values in specified columns into summary rows, such as finding the sum, count, average or aggregate values for each group.
+
+IMPs : 
+1. We must use group by when we want to group rows and apply aggregate functions on each group
+2. Columns that are not part of aggregate functions in the SELECT clause must be included in the group by clause.
+3.The GROUP BY clause comes after the WHERE clause but before the ORDER BY clause(if used)
+--------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+2.SUM()
+EX.
+SELECT SUM(sal) AS total_salary
+from emp;
+
+EX. To calculate the total salary paid to employees in each department.
+SELECT DEPTNO, SUM(sal) AS total_salary
+from emp
+GROUP BY DEPTNO;
+--------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+3.AVG()
+Ex. - To calculate average salary across all employees
+-> SELECT AVG(SAL) AS avg_salary
+     from emp;
+--------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+4. MIN() and MAX()
+Ex. To find the minimum and maximum in the company
+SELECT MIN(SAL) AS min_salary, MAX(sal) AS max_salary
+from emp;
+--------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+5. COUNT() with DISTINCT
+Ex - To count how many distinct job roles exist
+SELECT COUNT(DISTINCT JOB) AS unique_jobs
+from emp;
+--------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+
+
+
+
