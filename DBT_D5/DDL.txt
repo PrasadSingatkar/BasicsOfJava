@@ -1,0 +1,58 @@
+2. DDL Statements (Data Definition Language)
+-----------------------------------------------------------------------------------------------------------------------------------------------------------------
+CREATE Statement: 
+What: The CREATE statement is used to create new tables, indexes, or databases. It defines the structure of the table, including column names and their data types.
+
+How:
+CREATE TABLE DEPARTMENT (
+    DEPTNO INT PRIMARY KEY,
+    DNAME VARCHAR(50)
+);
+Explanation: This creates a DEPARTMENT table with two columns: DEPTNO (an integer that is also the primary key) and DNAME (a string of up to 50 characters).
+-----------------------------------------------------------------------------------------------------------------------------------------------------------------
+ALTER Statement:
+What: The ALTER statement is used to modify the structure of an existing table. It can add, modify, or delete columns in a table.
+
+How:
+ALTER TABLE EMP ADD AGE INT;
+Explanation: This command adds a new column called AGE of type INT to the EMP table. After running this, the table will have a new column where age information for employees can be stored.
+
+Example:
+ALTER TABLE EMP MODIFY SAL DECIMAL(10, 2);
+Explanation: This modifies the SAL (salary) column in the EMP table to hold a decimal value with up to 10 digits and 2 decimal places. For example, a salary value of 5000.75 can now be stored as 5000.75.
+-----------------------------------------------------------------------------------------------------------------------------------------------------------------
+DROP Statement
+What: The DROP statement permanently deletes a table, index, or database from the system. This includes the structure and data.
+
+How:
+DROP TABLE EMP;
+Explanation: This command deletes the EMP table completely, along with all its data. Once dropped, the table and its structure are removed from the database permanently.
+
+Example:
+DROP TABLE TEMP;
+Explanation: This command deletes a table named TEMP from the database. This might be used when the TEMP table is no longer needed, perhaps because it was used temporarily during some data processing.
+-----------------------------------------------------------------------------------------------------------------------------------------------------------------
+TRUNCATE Statement
+What: The TRUNCATE statement removes all rows from a table but keeps the table structure intact for future use. It's a fast operation because it doesn't log individual row deletions.
+
+How:
+TRUNCATE TABLE EMP;
+Explanation: This command removes all records from the EMP table, but the table structure (columns and constraints) remains in place. This is faster than using DELETE without a WHERE clause because it doesn't log each row deletion.
+
+Example:
+TRUNCATE TABLE LOGS;
+Explanation: This command clears all data from the LOGS table, often used when the table holds temporary or log data that can be safely deleted. The table's structure is preserved, so new log data can still be inserted after truncation.
+-----------------------------------------------------------------------------------------------------------------------------------------------------------------
+============================================================================================================
+Difference between DROP and TRUNCATE
+=================================
+DROP:
+Removes both the table structure and data permanently.
+Cannot be rolled back.
+Example: DROP TABLE EMP;
+
+TRUNCATE:
+Deletes only the data, keeping the table structure.
+Faster than DELETE as it doesn't generate individual row deletions.
+Example: TRUNCATE TABLE EMP;
+

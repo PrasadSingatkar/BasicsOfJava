@@ -1,0 +1,169 @@
+1. Single Row Functions
+--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+sqrt(num): Returns the square root of a number.
+
+Example (EMP Table):
+SELECT ENAME, sqrt(SAL) FROM EMP;
+Explanation: This query returns the square root of each employee's salary. For instance, if an employee's salary is 1600, the result will be approximately 40.
+
+Other Example:
+SELECT sqrt(16);
+Explanation: This will return 4, as the square root of 16 is 4.
+--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+abs(num): Returns the absolute (positive) value of a number.
+
+Example:
+SELECT abs(-5);
+Explanation: This will return 5, which is the absolute value of -5.
+--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+round(num, 2): Rounds a number to n decimal places.
+
+Example (EMP Table):
+SELECT ENAME, round(SAL, 2) FROM EMP;
+Explanation: This will round the salary of each employee to 2 decimal places. For example, a salary of 2975.567 will be rounded to 2975.57.
+
+Other Example:
+SELECT round(123.4567, 2);
+Explanation: This rounds 123.4567 to 2 decimal places, resulting in 123.46.
+--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+truncate(num, n): Truncates a number to n decimal places without rounding.
+
+Example (EMP Table):
+SELECT ENAME, truncate(SAL, 2) FROM EMP;
+Explanation: This truncates each employee's salary to 2 decimal places without rounding. For instance, 2975.567 becomes 2975.56.
+
+Other Example:
+SELECT truncate(123.4567, 2);
+Explanation: This truncates 123.4567 to 123.45, cutting off without rounding.
+--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+ceil(num): Returns the smallest integer greater than or equal to the number.
+
+Example (EMP Table):
+SELECT ENAME, ceil(SAL) FROM EMP;
+Explanation: This query returns the ceiling value of the salary. For instance, a salary of 2975.34 becomes 2976.
+
+Other Example:
+SELECT ceil(12.3);
+Explanation: This returns 13, as it is the smallest integer greater than 12.3.
+--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+floor(num): Returns the largest integer less than or equal to the number.
+
+Example (EMP Table):
+SELECT ENAME, floor(SAL) FROM EMP;
+Explanation: This query returns the floor value of each employee's salary. For example, if the salary is 2975.99, it returns 2975.
+
+Other Example:
+SELECT floor(12.8);
+Explanation: This will return 12, as it is the largest integer less than 12.8.
+--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+ascii(str): Returns the ASCII value of the first character in a string.
+
+Example (EMP Table):
+SELECT ENAME, ascii(ENAME) FROM EMP;
+Explanation: This query returns the ASCII value of the first letter of each employee's name. For example, the ASCII value of 'S' in 'SMITH' is 83.
+
+Other Example:
+SELECT ascii('A');
+Explanation: This returns 65, which is the ASCII value of 'A'.
+--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+substr(str, start, length): Extracts a substring from the string starting at the specified position.
+
+Example (EMP Table):
+SELECT ENAME, substr(ENAME, 1, 3) FROM EMP;
+Explanation: This query returns the first 3 characters of each employee's name. For example, 'SMITH' becomes 'SMI'.
+
+Other Example:
+SELECT substr('Database', 2, 4);
+Explanation: This extracts 4 characters starting from the 2nd character, resulting in 'atab'.
+--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+concat(str1, str2): Concatenates two strings.
+
+Example (EMP Table):
+SELECT concat(ENAME, ' is a ', JOB) FROM EMP;
+Explanation: This query concatenates the employee's name, the phrase "is a", and their job title. For example, 'SMITH' and 'CLERK' will produce 'SMITH is a CLERK'.
+
+Other Example:
+SELECT concat('Hello', ' World');
+Explanation: This returns 'Hello World' by concatenating the two strings.
+--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+lower(str): Converts a string to lowercase.
+
+Example (EMP Table):
+SELECT lower(ENAME) FROM EMP;
+Explanation: This converts each employee's name to lowercase. For example, 'SMITH' becomes 'smith'.
+
+Other Example:
+SELECT lower('HELLO');
+Explanation: This converts 'HELLO' to 'hello'.
+--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+upper(str): Converts a string to uppercase.
+
+Example (EMP Table):
+SELECT upper(ENAME) FROM EMP;
+Explanation: This converts each employee's name to uppercase. For example, 'smith' becomes 'SMITH'.
+
+Other Example:
+SELECT upper('hello');
+Explanation: This converts 'hello' to 'HELLO'.
+--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+instr(str, substr): Returns the position of a substring in a string.
+
+Example (EMP Table):
+SELECT instr(ENAME, 'S') FROM EMP;
+Explanation: This query returns the position of the letter 'S' in each employee's name. For example, in 'SMITH', 'S' is at position 1.
+
+Other Example:
+SELECT instr('Database', 'base');
+Explanation: This returns 5, as the substring 'base' starts at the 5th position in 'Database'.
+--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+trim(str): Removes leading and trailing spaces from a string.
+
+Example (EMP Table):
+SELECT trim(ENAME) FROM EMP;
+Explanation: This removes any leading or trailing spaces from the employee's name, though names in EMP typically won't have spaces.
+
+Other Example:
+SELECT trim('  Hello  ');
+Explanation: This returns 'Hello', removing the spaces.
+--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+lpad(str, length, padstr): Left-pads a string with a specified character.
+
+Example (EMP Table):
+SELECT lpad(ENAME, 10, '*') FROM EMP;
+Explanation: This left-pads each employee's name with asterisks to make the total length 10. For example, 'SMITH' becomes '*****SMITH'.
+
+Other Example:
+SELECT lpad('Hello', 8, '*');
+Explanation: This returns '***Hello'.
+--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+rpad(str, length, padstr): Right-pads a string with a specified character.
+
+Example (EMP Table):
+SELECT rpad(ENAME, 10, '-') FROM EMP;
+Explanation: This right-pads each employee's name with hyphens to make the total length 10. For example, 'SMITH' becomes 'SMITH-----'.
+
+Other Example:
+SELECT rpad('Hello', 8, '-');
+Explanation: This returns 'Hello---'.
+--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+length(str): Returns the length of a string.
+
+Example (EMP Table):
+SELECT ENAME, length(ENAME) FROM EMP;
+Explanation: This returns the number of characters in each employee's name. For example, 'SMITH' has 5 characters.
+
+Other Example:
+SELECT length('Hello');
+Explanation: This returns 5, which is the number of characters in 'Hello'.
+--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+format(num, d): Formats a number to d decimal places.
+
+Example (EMP Table):
+SELECT ENAME, format(SAL, 2) FROM EMP;
+Explanation: This formats each employee's salary to 2 decimal places. For example, 1600 becomes 1600.00.
+
+Other Example:
+SELECT format(12345.6789, 2);
+Explanation: This formats 12345.6789 as 12345.68.
+--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
