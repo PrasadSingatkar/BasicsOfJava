@@ -1,0 +1,122 @@
+Single Row Functions:
+ 
+1. sqrt(num) : returns the square root of a number.
+
+Example:
+SELECT ENAME, sqrt(SAL) FROM EMP;
+EXPLANATION: This query returns the square root of each employee's salary.
+
+other:
+SELECT sqrt(1600);
+-------------------------------------------------------------------------------------------------------------------------------------------------
+2. abs(num) - returns the absolute value of a number.
+Example:
+SELECT abs(-5);
+-------------------------------------------------------------------------------------------------------------------------------------------------
+3. round(num, n) - rounds a number to n decimal places.
+
+other ex:
+SELECT round(123.4567,3);
+-------------------------------------------------------------------------------------------------------------------------------------------------
+4. truncate(num, n) - truncates a number to n decimal places without rounding
+
+other ex. :
+SELECT truncate(123.4567,2);
+
+-------------------------------------------------------------------------------------------------------------------------------------------------
+5. ceil(num) : returns smallest integer greater than or equal to a number.
+
+SELECT ceil(15.4);
+-------------------------------------------------------------------------------------------------------------------------------------------------
+6. floor(num) : 
+
+SELECT floor(15.4);
+-------------------------------------------------------------------------------------------------------------------------------------------------
+7. ascii(str) : Returns the ASCII value of the first character in a string.
+SELECT ascii('A');
+-------------------------------------------------------------------------------------------------------------------------------------------------
+8.substr(str, start, length) - Extracts substring from the string starting at specified position.
+
+SELECT ENAME, substr(ENAME, 1, 3) FROM EMP;
+
+-------------------------------------------------------------------------------------------------------------------------------------------------
+9. concat(str1, str2): Concatenates two strings.
+
+
+SELECT concat(ENAME, ' is a ', JOB) FROM EMP;
+
+-------------------------------------------------------------------------------------------------------------------------------------------------
+10. lower(str): Converts a string to lowercase
+
+SELECT lower(ENAME) FROM EMP;
+-------------------------------------------------------------------------------------------------------------------------------------------------
+11. upper(str): Converts a string to uppercase.
+
+SELECT upper('Hello');
+
+-------------------------------------------------------------------------------------------------------------------------------------------------
+12. instr(str, substr): Returns the position of a substring in a string.
+
+SELECT instr('Database', 'base');
+-------------------------------------------------------------------------------------------------------------------------------------------------
+13. trim(str): Removes leading and trailing spaces from a string.
+
+SELECT trim('  Hello  ');
+Explanation: This returns 'Hello', removing the spaces.
+-------------------------------------------------------------------------------------------------------------------------------------------------
+14. lpad(str, length, padstr): Left-pads a string with a specified character.
+
+SELECT lpad('Hello', 8, 'A');
+-------------------------------------------------------------------------------------------------------------------------------------------------
+15. rpad(str, length, padstr): Right-pads a string with a specified character.
+
+SELECT rpad('Hello', 8, '-');
+
+SELECT rpad(ENAME,15,'@gmail.com');
+-------------------------------------------------------------------------------------------------------------------------------------------------
+16. length(str): Returns the length of a string.
+
+SELECT length('Hello');
+-------------------------------------------------------------------------------------------------------------------------------------------------
+17. format(num, d): Formats a number to d decimal places.
+
+SELECT format(12345.6789, 2);
+====================================================================================
+DDL
+====================================================================================
+CREATE Statement: 
+What: The CREATE statement is used to create new tables, indexes, or databases. It defines the structure of the table, including column names and their data types.
+
+How:
+CREATE TABLE DEPARTMENT (
+    DEPTNO INT PRIMARY KEY,
+    DNAME VARCHAR(50)
+);
+Explanation: This creates a DEPARTMENT table with two columns: DEPTNO (an integer that is also the primary key) and DNAME (a string of up to 50 characters).
+====================================================================================
+ALTER Statement:
+What: The ALTER statement is used to modify the structure of an existing table. It can add, modify, or delete columns in a table.
+
+How:
+ALTER TABLE EMP ADD AGE INT;
+Explanation: This command adds a new column called AGE of type INT to the EMP table. After running this, the table will have a new column where age information for employees can be stored.
+====================================================================================
+DROP Statement
+What: The DROP statement permanently deletes a table, index, or database from the system. This includes the structure and data.
+
+How:
+DROP TABLE EMP;
+Explanation: This command deletes the EMP table completely, along with all its data. Once dropped, the table and its structure are removed from the database permanently.
+====================================================================================
+TRUNCATE Statement
+What: The TRUNCATE statement removes all rows from a table but keeps the table structure intact for future use. It's a fast operation because it doesn't log individual row deletions.
+
+How:
+TRUNCATE TABLE EMP;
+Explanation: This command removes all records from the EMP table, but the table structure (columns and constraints) remains in place. This is faster than using DELETE without a WHERE clause because it doesn't log each row deletion.
+====================================================================================
+to delete only one column
+
+alter table emp drop column age;
+
+====================================================================================
