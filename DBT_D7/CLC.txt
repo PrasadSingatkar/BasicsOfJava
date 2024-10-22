@@ -1,0 +1,277 @@
+mysql>  SELECT curdate();
++------------+
+| curdate()  |
++------------+
+| 2024-10-22 |
++------------+
+1 row in set (0.00 sec)
+
+mysql> SELECT now();
++---------------------+
+| now()               |
++---------------------+
+| 2024-10-22 10:18:46 |
++---------------------+
+1 row in set (0.00 sec)
+
+mysql> SELECT date_format(curdate(), '%M %D %Y');
++------------------------------------+
+| date_format(curdate(), '%M %D %Y') |
++------------------------------------+
+| October 22nd 2024                  |
++------------------------------------+
+1 row in set (0.00 sec)
+
+mysql> SELECT date_format(curdate(), '%M %d %Y');
++------------------------------------+
+| date_format(curdate(), '%M %d %Y') |
++------------------------------------+
+| October 22 2024                    |
++------------------------------------+
+1 row in set (0.00 sec)
+
+mysql> SELECT date_format(curdate(), '%m %d %Y');
++------------------------------------+
+| date_format(curdate(), '%m %d %Y') |
++------------------------------------+
+| 10 22 2024                         |
++------------------------------------+
+1 row in set (0.00 sec)
+
+mysql>  SELECT date_format(curdate(), '%m %d %y');
++------------------------------------+
+| date_format(curdate(), '%m %d %y') |
++------------------------------------+
+| 10 22 24                           |
++------------------------------------+
+1 row in set (0.00 sec)
+
+mysql> Select datediff('2022-11-23', '2000-12-01') days;
++------+
+| days |
++------+
+| 8027 |
++------+
+1 row in set (0.00 sec)
+
+mysql> SELECT
+    ->     emp_id,
+    ->     emp_name,
+    ->     hire_date,
+    ->     TIMESTAMPDIFF(YEAR, hire_date, CURDATE()) AS experience_years
+    -> FROM
+    ->     EMP;
+ERROR 1046 (3D000): No database selected
+mysql> use flynaut;
+Database changed
+mysql> SELECT
+    ->     emp_id,
+    ->     emp_name,
+    ->     hire_date,
+    ->     TIMESTAMPDIFF(YEAR, hire_date, CURDATE()) AS experience_years
+    -> FROM
+    ->     EMP;
+ERROR 1054 (42S22): Unknown column 'emp_id' in 'field list'
+mysql>     SELECT ENAME ,DATEDIFF(CURRENT_DATE,HIRE_DATE)/365 FROM EMP;
+ERROR 1054 (42S22): Unknown column 'HIRE_DATE' in 'field list'
+mysql> SELECT empno,ename, floor(datediff(curdate(),hiredate)/365) EXPERIENCE
+    -> from emp;
++-------+--------+------------+
+| empno | ename  | EXPERIENCE |
++-------+--------+------------+
+|  7499 | ALLEN  |         43 |
+|  7521 | WARD   |         43 |
+|  7566 | JONES  |         43 |
+|  7654 | MARTIN |         43 |
+|  7698 | BLAKE  |         43 |
+|  7782 | CLARK  |         43 |
+|  7788 | SCOTT  |         41 |
+|  7839 | KING   |         42 |
+|  7844 | TURNER |         43 |
+|  7876 | ADAMS  |         41 |
+|  7900 | JAMES  |         42 |
+|  7902 | FORD   |         42 |
+|  7934 | MILLER |         42 |
++-------+--------+------------+
+13 rows in set (0.00 sec)
+
+mysql> date_add(curdate(), interval 4 day);
+ERROR 1064 (42000): You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near 'date_add(curdate(), interval 4 day)' at line 1
+mysql> select date_add(curdate(), interval 1 week);
++--------------------------------------+
+| date_add(curdate(), interval 1 week) |
++--------------------------------------+
+| 2024-10-29                           |
++--------------------------------------+
+1 row in set (0.00 sec)
+
+mysql> select date_add(curdate(), interval 1 year);
++--------------------------------------+
+| date_add(curdate(), interval 1 year) |
++--------------------------------------+
+| 2025-10-22                           |
++--------------------------------------+
+1 row in set (0.00 sec)
+
+mysql> select date_add(curdate(), interval 4 day);
++-------------------------------------+
+| date_add(curdate(), interval 4 day) |
++-------------------------------------+
+| 2024-10-26                          |
++-------------------------------------+
+1 row in set (0.00 sec)
+
+mysql> SELECT ENAME, HIREDATE
+    -> FROM EMP
+    -> WHERE MONTH(HIREDATE) = 2;
++-------+------------+
+| ENAME | HIREDATE   |
++-------+------------+
+| ALLEN | 1981-02-20 |
+| WARD  | 1981-02-22 |
++-------+------------+
+2 rows in set (0.00 sec)
+
+mysql> desc emp;
++----------+--------------+------+-----+---------+-------+
+| Field    | Type         | Null | Key | Default | Extra |
++----------+--------------+------+-----+---------+-------+
+| EMPNO    | int          | NO   | PRI | NULL    |       |
+| ENAME    | varchar(20)  | YES  |     | NULL    |       |
+| JOB      | varchar(20)  | YES  |     | NULL    |       |
+| MGR      | int          | YES  |     | NULL    |       |
+| HIREDATE | date         | YES  |     | NULL    |       |
+| SAL      | decimal(7,2) | YES  |     | NULL    |       |
+| COMM     | decimal(7,2) | YES  |     | NULL    |       |
+| DEPTNO   | int          | YES  |     | NULL    |       |
+| AGE      | int          | YES  |     | NULL    |       |
++----------+--------------+------+-----+---------+-------+
+9 rows in set (0.01 sec)
+
+mysql> ALTER TABLE EMP
+    -> MODIFY AGE INT NOT NULL;
+ERROR 1138 (22004): Invalid use of NULL value
+mysql> SELECT * FROM EMP;
++-------+--------+-----------+------+------------+---------+---------+--------+------+
+| EMPNO | ENAME  | JOB       | MGR  | HIREDATE   | SAL     | COMM    | DEPTNO | AGE  |
++-------+--------+-----------+------+------------+---------+---------+--------+------+
+|  7499 | ALLEN  | SALESMAN  | 7698 | 1981-02-20 | 1600.00 |  300.00 |     30 | NULL |
+|  7521 | WARD   | SALESMAN  | 7698 | 1981-02-22 | 1250.00 |  500.00 |     30 | NULL |
+|  7566 | JONES  | MANAGER   | 7839 | 1981-04-02 | 2975.00 |    NULL |     20 | NULL |
+|  7654 | MARTIN | SALESMAN  | 7698 | 1981-09-28 | 1250.00 | 1400.00 |     30 | NULL |
+|  7698 | BLAKE  | MANAGER   | 7839 | 1981-05-01 | 2850.00 |    NULL |     30 | NULL |
+|  7782 | CLARK  | MANAGER   | 7839 | 1981-06-09 | 2450.00 |    NULL |     10 | NULL |
+|  7788 | SCOTT  | ANALYST   | 7566 | 1982-12-09 | 3000.00 |    NULL |     20 | NULL |
+|  7839 | KING   | PRESIDENT | NULL | 1981-11-17 | 5000.00 |    NULL |     10 | NULL |
+|  7844 | TURNER | SALESMAN  | 7698 | 1981-09-08 | 1500.00 |    0.00 |     30 | NULL |
+|  7876 | ADAMS  | CLERK     | 7788 | 1983-01-12 | 1100.00 |    NULL |     20 | NULL |
+|  7900 | JAMES  | CLERK     | 7698 | 1981-12-03 |  950.00 |    NULL |     30 | NULL |
+|  7902 | FORD   | ANALYST   | 7566 | 1981-12-03 | 3000.00 |    NULL |     20 | NULL |
+|  7934 | MILLER | CLERK     | 7782 | 1982-01-23 | 1300.00 |    NULL |     10 | NULL |
++-------+--------+-----------+------+------------+---------+---------+--------+------+
+13 rows in set (0.00 sec)
+
+mysql> alter table emp add column age int not null;
+ERROR 1060 (42S21): Duplicate column name 'age'
+mysql> alter table emp rename to employee;
+Query OK, 0 rows affected (0.03 sec)
+
+mysql> SELECT * FROM EMP;
+ERROR 1146 (42S02): Table 'flynaut.emp' doesn't exist
+mysql> SELECT * FROM employee;
++-------+--------+-----------+------+------------+---------+---------+--------+------+
+| EMPNO | ENAME  | JOB       | MGR  | HIREDATE   | SAL     | COMM    | DEPTNO | AGE  |
++-------+--------+-----------+------+------------+---------+---------+--------+------+
+|  7499 | ALLEN  | SALESMAN  | 7698 | 1981-02-20 | 1600.00 |  300.00 |     30 | NULL |
+|  7521 | WARD   | SALESMAN  | 7698 | 1981-02-22 | 1250.00 |  500.00 |     30 | NULL |
+|  7566 | JONES  | MANAGER   | 7839 | 1981-04-02 | 2975.00 |    NULL |     20 | NULL |
+|  7654 | MARTIN | SALESMAN  | 7698 | 1981-09-28 | 1250.00 | 1400.00 |     30 | NULL |
+|  7698 | BLAKE  | MANAGER   | 7839 | 1981-05-01 | 2850.00 |    NULL |     30 | NULL |
+|  7782 | CLARK  | MANAGER   | 7839 | 1981-06-09 | 2450.00 |    NULL |     10 | NULL |
+|  7788 | SCOTT  | ANALYST   | 7566 | 1982-12-09 | 3000.00 |    NULL |     20 | NULL |
+|  7839 | KING   | PRESIDENT | NULL | 1981-11-17 | 5000.00 |    NULL |     10 | NULL |
+|  7844 | TURNER | SALESMAN  | 7698 | 1981-09-08 | 1500.00 |    0.00 |     30 | NULL |
+|  7876 | ADAMS  | CLERK     | 7788 | 1983-01-12 | 1100.00 |    NULL |     20 | NULL |
+|  7900 | JAMES  | CLERK     | 7698 | 1981-12-03 |  950.00 |    NULL |     30 | NULL |
+|  7902 | FORD   | ANALYST   | 7566 | 1981-12-03 | 3000.00 |    NULL |     20 | NULL |
+|  7934 | MILLER | CLERK     | 7782 | 1982-01-23 | 1300.00 |    NULL |     10 | NULL |
++-------+--------+-----------+------+------------+---------+---------+--------+------+
+13 rows in set (0.01 sec)
+
+mysql> ALTER TABLE EMPLOYEE CHANGE ENAME EMP_NAME VARCHAR(50);
+Query OK, 0 rows affected (0.03 sec)
+Records: 0  Duplicates: 0  Warnings: 0
+
+mysql> SELECT * FROM employee;
++-------+----------+-----------+------+------------+---------+---------+--------+------+
+| EMPNO | EMP_NAME | JOB       | MGR  | HIREDATE   | SAL     | COMM    | DEPTNO | AGE  |
++-------+----------+-----------+------+------------+---------+---------+--------+------+
+|  7499 | ALLEN    | SALESMAN  | 7698 | 1981-02-20 | 1600.00 |  300.00 |     30 | NULL |
+|  7521 | WARD     | SALESMAN  | 7698 | 1981-02-22 | 1250.00 |  500.00 |     30 | NULL |
+|  7566 | JONES    | MANAGER   | 7839 | 1981-04-02 | 2975.00 |    NULL |     20 | NULL |
+|  7654 | MARTIN   | SALESMAN  | 7698 | 1981-09-28 | 1250.00 | 1400.00 |     30 | NULL |
+|  7698 | BLAKE    | MANAGER   | 7839 | 1981-05-01 | 2850.00 |    NULL |     30 | NULL |
+|  7782 | CLARK    | MANAGER   | 7839 | 1981-06-09 | 2450.00 |    NULL |     10 | NULL |
+|  7788 | SCOTT    | ANALYST   | 7566 | 1982-12-09 | 3000.00 |    NULL |     20 | NULL |
+|  7839 | KING     | PRESIDENT | NULL | 1981-11-17 | 5000.00 |    NULL |     10 | NULL |
+|  7844 | TURNER   | SALESMAN  | 7698 | 1981-09-08 | 1500.00 |    0.00 |     30 | NULL |
+|  7876 | ADAMS    | CLERK     | 7788 | 1983-01-12 | 1100.00 |    NULL |     20 | NULL |
+|  7900 | JAMES    | CLERK     | 7698 | 1981-12-03 |  950.00 |    NULL |     30 | NULL |
+|  7902 | FORD     | ANALYST   | 7566 | 1981-12-03 | 3000.00 |    NULL |     20 | NULL |
+|  7934 | MILLER   | CLERK     | 7782 | 1982-01-23 | 1300.00 |    NULL |     10 | NULL |
++-------+----------+-----------+------+------------+---------+---------+--------+------+
+13 rows in set (0.00 sec)
+
+mysql> Alter table employee
+    ->       alter  age set default 30;
+Query OK, 0 rows affected (0.02 sec)
+Records: 0  Duplicates: 0  Warnings: 0
+
+mysql> SELECT * FROM employee;
++-------+----------+-----------+------+------------+---------+---------+--------+------+
+| EMPNO | EMP_NAME | JOB       | MGR  | HIREDATE   | SAL     | COMM    | DEPTNO | AGE  |
++-------+----------+-----------+------+------------+---------+---------+--------+------+
+|  7499 | ALLEN    | SALESMAN  | 7698 | 1981-02-20 | 1600.00 |  300.00 |     30 | NULL |
+|  7521 | WARD     | SALESMAN  | 7698 | 1981-02-22 | 1250.00 |  500.00 |     30 | NULL |
+|  7566 | JONES    | MANAGER   | 7839 | 1981-04-02 | 2975.00 |    NULL |     20 | NULL |
+|  7654 | MARTIN   | SALESMAN  | 7698 | 1981-09-28 | 1250.00 | 1400.00 |     30 | NULL |
+|  7698 | BLAKE    | MANAGER   | 7839 | 1981-05-01 | 2850.00 |    NULL |     30 | NULL |
+|  7782 | CLARK    | MANAGER   | 7839 | 1981-06-09 | 2450.00 |    NULL |     10 | NULL |
+|  7788 | SCOTT    | ANALYST   | 7566 | 1982-12-09 | 3000.00 |    NULL |     20 | NULL |
+|  7839 | KING     | PRESIDENT | NULL | 1981-11-17 | 5000.00 |    NULL |     10 | NULL |
+|  7844 | TURNER   | SALESMAN  | 7698 | 1981-09-08 | 1500.00 |    0.00 |     30 | NULL |
+|  7876 | ADAMS    | CLERK     | 7788 | 1983-01-12 | 1100.00 |    NULL |     20 | NULL |
+|  7900 | JAMES    | CLERK     | 7698 | 1981-12-03 |  950.00 |    NULL |     30 | NULL |
+|  7902 | FORD     | ANALYST   | 7566 | 1981-12-03 | 3000.00 |    NULL |     20 | NULL |
+|  7934 | MILLER   | CLERK     | 7782 | 1982-01-23 | 1300.00 |    NULL |     10 | NULL |
++-------+----------+-----------+------+------------+---------+---------+--------+------+
+13 rows in set (0.00 sec)
+
+mysql> SELECT ename, sal
+    -> from employee
+    -> where sal > (SELECT AVG(SAL) FROM EMPLOYEE );
+ERROR 1054 (42S22): Unknown column 'ename' in 'field list'
+mysql> SELECT  EMP_NAME, sal
+    -> from employee
+    -> where sal > (SELECT AVG(SAL) FROM EMPLOYEE );
++----------+---------+
+| EMP_NAME | sal     |
++----------+---------+
+| JONES    | 2975.00 |
+| BLAKE    | 2850.00 |
+| CLARK    | 2450.00 |
+| SCOTT    | 3000.00 |
+| KING     | 5000.00 |
+| FORD     | 3000.00 |
++----------+---------+
+6 rows in set (0.00 sec)
+
+mysql> SELECT AVG(SAL) FROM EMPLOYEE;
++-------------+
+| AVG(SAL)    |
++-------------+
+| 2171.153846 |
++-------------+
+1 row in set (0.00 sec)
+
+mysql>
