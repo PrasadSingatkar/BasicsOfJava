@@ -1,0 +1,85 @@
+Agenda :
+- Workbench (How to create schema, How to create Table, How to insert values into table, how to fire queries in different ways)
+- Date Functions
+- Alter Examples
+- Subquery
+==========================================================================
+Date Functions: 
+1 . To show only date : curdate()
+Ex. SELECT curdate();
+
+2. To display the current date and time both : now()
+Ex. SELECT now(); 
+
+3. To display date in user understandable format : date_format()
+Ex. Display the in the format September 27 2024.
+>> SELECT date_format(curdate(), '%m %d %y');
+
+%d : date without st/nd/rd ( ex. 1st/2nd/3rd)
+%m: month in digits
+%y : year(in 2 digits)
+%Y : year (in 4 digits)
+%D : add st/nd/rd in date
+%M : to show monthname in character
+
+Display the hiredate in the format 27 September  2024.*
+
+4. datediff(fromdate,todate) : displays difference of no of days between two dates
+Ex.
+Select datediff('2022-11-23', '2000-12-01') days;
+
+Find the experience of every employee :
+SELECT empno,ename, floor(datediff(curdate(),hiredate)/365) EXPERIENCE 
+from emp;
+
+Assume we have a medicine table(mid, mname, price,exp_date)
+find all medicines which will expire in 3 months.*
+find all products which are not expired. *
+
+5. date_add(date,interval ) : finds the date which is after given interval of time
+select date_add(curdate(), interval 1 week);
+select date_add(curdate(), interval 1 year);
+select date_add(curdate(), interval 4 day);
+
+Q  - To find all employees who joined in february.
+SELECT ENAME, HIREDATE
+FROM EMP
+WHERE MONTH(HIREDATE) = 2;
+==========================================================================
+ALTER : 
+
+To add age column in emp table.
+>> ALTER TABLE EMP ADD AGE INT;
+
+To add not null constraint to age column.
+>> ALTER TABLE EMP
+      MODIFY AGE INT NOT NULL; 
+
+TO RENAME the column (ename to emp_name)
+>> ALTER TABLE EMPLOYEE CHANGE ENAME EMP_NAME VARCHAR(50);
+
+TO DROP A COLUMN(COMM)
+>> ALTER TABLE EMPLOYEE 
+      DROP COLUMN COMM;
+
+To change the default value of age as 30;*
+>> Alter table employee 
+      alter  age set default 30; 
+
+Add a unique constraint on empno.
+
+rename the table emp to flynautemp.
+==========================================================================
+- Subquery
+
+Ex. Find the employees whose salary is greater than the average salary of all employees.
+SELECT  EMP_NAME, sal
+from employee
+where sal > (SELECT AVG(SAL) FROM EMPLOYEE ); 
+
+
+SELECT  EMP_NAME, sal
+from employee
+where sal > 2171.153846
+
+
