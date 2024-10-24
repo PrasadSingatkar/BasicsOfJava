@@ -1,0 +1,18 @@
+To list all managers and their subordinates, we need to perform a self-join on the EMP table. The idea is to join the table with itself where the manager (MGR) in the subordinate row matches the EMPNO (employee number) in the manager row.
+
+SQL query for this scenario:
+SELECT MGR.EMP_NAME AS MANAGER, EMP.EMP_NAME AS SUBORDINATE
+FROM EMP EMP
+JOIN EMP MGR ON EMP.MGR = MGR.EMPNO
+ORDER BY MGR.EMP_NAME, EMP.EMP_NAME;
+
+Explanation:
+EMP EMP: This is the subordinate table.
+EMP MGR: This is the manager table.
+EMP.MGR = MGR.EMPNO: This joins the subordinate's manager (MGR) with the manager's employee number (EMPNO).
+ORDER BY MGR.EMP_NAME, EMP.EMP_NAME: Orders the result by manager name and subordinate name.
+Output:
+This query will return the list of managers and their respective subordinates:
+---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+
