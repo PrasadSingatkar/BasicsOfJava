@@ -1,0 +1,25 @@
+Assignment Questions
+
+Basic Class Creation:
+Create a Book class with attributes title, author, and price. Add a method displayDetails() to print the book’s details. Write a Main class to create an instance of Book, set its attributes, and display the details.
+
+Working with Objects:
+Create a Student class with attributes name, rollNumber, and grade. Add a method printStudentInfo() that displays the student’s information. In the Main class, create multiple Student objects with different attribute values and print each student’s information.
+
+Using the this Keyword:
+Write a Product class with attributes name, price, and quantity. Add a method setProductDetails() that takes parameters with the same names as the class attributes, using the this keyword to set values. Create an object of Product in Main, set its details, and print them.
+
+Default Constructor:
+Create a Person class with attributes name and age. Provide a default constructor that initializes name to "Unknown" and age to 0. Write a method displayPerson() to print these details. Create an object of Person using the default constructor and call displayPerson().
+
+Parameterized Constructor:
+Modify the Person class (from above question) to include a parameterized constructor that takes name and age as parameters and initializes them. Create an object using this constructor, then call displayPerson() to show the initialized values.
+
+Multiple Constructors:
+In the Employee class, create two constructors: one default constructor that sets default values for name and salary, and another parameterized constructor that accepts name and salary as arguments. Write a method to display the Employee details. In Main, create two objects—one with the default constructor and one with the parameterized constructor—and display their details.
+
+Encapsulation:
+Create a BankAccount class with private attributes accountNumber, accountHolder, and balance. Add methods to setAccountDetails() and getAccountDetails() to set and retrieve the details. Demonstrate encapsulation by creating a BankAccount object, setting its details, and then retrieving them.
+
+Creating Multiple Objects with Different Values:
+Create a Movie class with attributes title, genre, and rating. Add a method to display the details of the movie. In Main, create three objects of Movie, each with different values, and call the display method on each to print their details.

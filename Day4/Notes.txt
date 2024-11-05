@@ -1,0 +1,163 @@
+Agenda : 
+
+- Introduction to Object-Oriented Programming
+	~ Key Principles
+	~ Why OOP?
+- Classes and Objects
+- The this keyword
+- Constructors
+	~ Default Constructor
+	~ Parameterized Constructor
+- Methods
+=========================================================================================
+- Introduction to Object-Oriented Programming
+     ~OOP is programming paradigm that organizes software design around data, or objects , rather than functions and logic.
+=========================================================================================
+	~Key Principles
+1. Encapsulation : 
+- Encapsulation is the way of keeping data (attributes) and methods that act on the data together in a single  unit.
+- It restricts direct access to some components, protecting the integrity of data.
+
+2. Abstraction : 
+- hiding the implementation details of a code and exposing only the necessary information to the user.
+
+3. Inheritance :
+- It allows one class (child or subclass) to inherit attributes and methods from another class( parent or superclass), 
+- promotes code reusabiity and a hierarchical structure
+
+4. Polymorphism : 
+- Polymorphism enables methods or objects to operate differently based on the context.
+There are two types:
+- Compile Time Polymorphism(method overloading)
+- Runtime Polymorphism( method overriding)
+=========================================================================================
+	~ Why OOP?
+- Reusability : By using code via inheritance, development becomes faster, and code duplication is reduced.
+- Modularity  : Classes and objects seperate functionality, making the code modular and easier to manage.
+- Maintainability : Changes to one part of the application dont affect the other parts, improving the maintainability of code
+- Scalability : The modular nature of the OOP makes it easier to scale applications as new functionalities can be added by creating new classes or modifying the existing ones.
+=========================================================================================
+ - Classes and Objects
+
+Class : A class is a blueprint or template from which individual objects are created.
+It defines the structure and behaviour that the objects created from the class will have.
+
+Example: 
+class Car {
+    String model;
+    int year;
+
+    void startEngine() {
+        System.out.println("Engine Started");
+     }
+}
+=========================================================================================
+Object: 
+An instance of a class.
+
+Example  :
+public class Main{
+
+	public static void main(String[] args){
+
+	// Creating an object of a car class
+		Car myCar = new Car();
+
+	//Setting attributes
+   		myCar.model = "Tesla Model S";
+                                  myCar.year    = 2024;
+
+	// Accessing the method
+		myCar.startEngine();
+
+  }
+}
+=========================================================================================
+To create multiple objects : 
+
+Car car1 = new Car();
+Car car2 = new Car();
+
+car1.model = "Maruti";
+car1.year = 2022;
+
+System.out.println("Car1 : " + car1.model + ", Year : " + car1.year);
+=========================================================================================
+- The this keyword
+		this keyword is used to refer to the current object
+
+Example: 
+class Car {
+	    String model;
+                     int year;
+
+void setDetails(String model, int year){
+   this.model = model;     // 'this' refers to the current object's model attributes
+   this.year = year;           //this' refers to the current object's year attributes
+}
+}
+
+~ In the setDetails method, this.model and this.year refers to the attributes of the object, while model and year refer to the parameters passed to the method.
+=========================================================================================
+- Constructors
+
+Constructors are special methods that are used to initialize objects.
+They have the same name as the class and no return type.
+Constructors are automatically created when an object is created.
+
+Types of constructors:
+1. Default Constructor (0-argument constructor)
+
+Ex:
+class Car {
+    String model;
+    int year;
+
+// default constructor
+  Car() {
+	model = ''unknown';
+	year    = 0;
+}
+}
+
+~ When you create an object using the default constructor, the model and year fields are initialized with default values
+=========================================================================================
+2. Parameterized constructor: 
+This constructor takes parameters and allows the initialization of object attributes with specific values
+
+
+ex.
+class Car {
+    String model;
+    int year;
+
+// parameterized constructor
+  Car(String model, int year) {
+	this.model = model;
+	this.year    = year;
+}
+}
+//creating the object
+Car myCar = new Car("MG Hector" ,2023);
+=========================================================================================
+- Method
+
+Method define behavior for objects.
+A method has a return type, a name, and optional parameters.
+ SYNTAX:
+returnType methodName(parameters){
+  	//method body
+}
+=========================================================================================
+In car class we can have a method to display the details of the car 
+class Car {
+    String model;
+    int year;
+
+ 	void displayDetails() {
+		System.out.println("Model : " + model + ", Year : " + year);
+                                                   }
+}
+}
+
+
