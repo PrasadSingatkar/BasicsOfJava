@@ -1,0 +1,273 @@
+Agenda : 
+~ Inheritance
+	- Single Inheritance
+	- Multilevel Inheritance
+	- Hierarchical Inheritance
+~ Polymorphism 
+	~ Method Overloading 
+	~ Method Overriding
+~ Super Keyword
+	~ Ways to use Super Keyword  
+=================================================================================
+~ Inheritance:
+Inheritance is the process by which one class acquires the properties(fields) and functionalities(methods) of another class.
+This allows for reusability and hierarchical classification. 
+
+Types of Inheritance:
+- Single Inheritance :
+Concept: A child class inherits from a single parent class.
+--------------------------------------------------------------------------------------------------------------------------------
+package SingleInheritance;
+
+public class Parent {
+    void showMessage() {
+        System.out.println("Parent class");
+    }
+}
+--------------------------------------------------------------------------------------------------------------------------------
+package SingleInheritance;
+
+public class Child extends Parent {
+    void display(){
+        System.out.println("Child Class");
+    }
+}
+--------------------------------------------------------------------------------------------------------------------------------
+package SingleInheritance;
+
+public class Main {
+    public static void main(String[] args){
+        Child obj = new Child();
+        obj.showMessage();
+        obj.display();
+
+    }
+}
+--------------------------------------------------------------------------------------------------------------------------------
+o/p :
+Parent class
+Child Class
+
+The child class inherits the showMessage method from the parent class, 
+allowing access to both parent and child methods
+--------------------------------------------------------------------------------------------------------------------------------
+================================================================================
+- Multilevel Inheritance
+A class is derived from another derived class, forming a chain of inheritance
+--------------------------------------------------------------------------------------------------------------------------------
+package MultilevelInheritance;
+
+public class Grandparent {
+    void message(){
+        System.out.println("Grandparent Class");
+    }
+}
+--------------------------------------------------------------------------------------------------------------------------------
+package MultilevelInheritance;
+
+public class Parent extends Grandparent {
+    void showMessage() {
+        System.out.println("Parent class");
+    }
+}
+--------------------------------------------------------------------------------------------------------------------------------
+package MultilevelInheritance;
+
+public class Child extends Parent {
+    void display(){
+        System.out.println("Child Class");
+    }
+}
+--------------------------------------------------------------------------------------------------------------------------------
+package MultilevelInheritance;
+
+public class Main {
+    public static void main(String[] args){
+        Child obj = new Child();
+        obj.message();
+        obj.showMessage();
+        obj.display();
+
+    }
+}
+--------------------------------------------------------------------------------------------------------------------------------
+o/p:
+Grandparent Class
+Parent class
+Child Class
+
+Child class inherits from parent, which in turn inherits from Grandparent, allowing child to access methods from both classes.
+--------------------------------------------------------------------------------------------------------------------------------
+================================================================================
+~ Hierachical Inheritance
+Multiple child classes inherit from a single parent class
+--------------------------------------------------------------------------------------------------------------------------------
+package HierarchicalInheritance;
+
+public class Child1 extends Parent{
+    void display(){
+        System.out.println("Child 1 class");
+    }
+}
+--------------------------------------------------------------------------------------------------------------------------------
+package HierarchicalInheritance;
+
+public class Child2 extends Parent {
+    void display(){
+        System.out.println("Child 2 class");
+    }
+}
+--------------------------------------------------------------------------------------------------------------------------------
+package HierarchicalInheritance;
+
+public class Parent {
+    void showMessage(){
+        System.out.println("Parent class");
+    }
+}
+--------------------------------------------------------------------------------------------------------------------------------
+package HierarchicalInheritance;
+
+public class Main {
+    public static void main(String[] args){
+        Child1 obj1 = new Child1();
+        Child2 obj2 = new Child2();
+
+        obj1.showMessage();  // Parent method in Child1
+        obj1.display();      // Child1 specific method
+        obj2.showMessage();  // Parent method in Child2
+        obj2.display();      // Child2 specific method
+
+    }
+}
+--------------------------------------------------------------------------------------------------------------------------------
+o/p
+Parent class
+Child 1 class
+Parent class
+Child 2 class
+
+Child1 and Child2 both inherit from Parent, gaining access to its methods but can define their own.
+--------------------------------------------------------------------------------------------------------------------------------
+Note: Java doesnt support multiple inheritance(one class inheriting from multiple parent classes) to avoid ambiguity. 
+This can be achieved with the help of interfaces.
+=================================================================================
+ ~ Polymorphism 
+
+Types of Polymorphism:
+1. Method Overloading (Compile-time polymorphism)
+2. Method Overriding (Run-time polymorphism)
+
+1. Method Overloading (Compile-time polymorphism)
+A class has multiple methods with the same name but different parameter lists
+--------------------------------------------------------------------------------------------------------------------------------
+package MethodOverloading;
+
+public class Calculator {
+
+    int add(int a, int b){
+        return a+b;
+    }
+
+    int add(int a, int b, int c){
+        return a+b+c;
+    }
+}
+--------------------------------------------------------------------------------------------------------------------------------
+package MethodOverloading;
+
+public class Main {
+    public static void main(String[] args){
+        Calculator calc = new Calculator();
+
+        System.out.println("Sum of two numbers : " + calc.add(10,40));
+        System.out.println("Sum of three numbers : " + calc.add(10,30,50));
+    }
+}
+--------------------------------------------------------------------------------------------------------------------------------
+o/p:
+Sum of two numbers : 50
+Sum of three numbers : 90
+
+KeyPoints:
+~ Method Overloading is resolved at compile time
+~ The parameters must differ in type or number to avoid ambiguity.
+=================================================================================
+~Method Overriding (Runtime Polymorphism)
+A child class provides a specific implementation of a method already defined in its parent class.
+--------------------------------------------------------------------------------------------------------------------------------
+package MethodOverriding;
+
+public class Child extends Parent {
+    @Override
+    void show(){
+        System.out.println("Child class");
+    }
+}
+--------------------------------------------------------------------------------------------------------------------------------
+package MethodOverriding;
+
+public class Parent {
+    void show(){
+        System.out.println("Parent class");
+    }
+}
+--------------------------------------------------------------------------------------------------------------------------------
+package MethodOverriding;
+
+public class Main {
+
+    public static void main(String[] args){
+        Parent obj = new Child(); //Parent reference, Child Object
+        obj.show(); //calls overridden method in Child class
+    }
+}
+--------------------------------------------------------------------------------------------------------------------------------
+o/p:
+Child class
+
+Key points:
+~ Method overriding happens at runtime, enables runtime polymorphism
+~ The @Override annotation is optional but recommended to indicate an overriden method.
+=================================================================================
+Use of Super keyword:
+
+~When a subclass and superclass have methods with the same name, super can be used to call the superclass one.
+
+package MethodOverriding;
+
+public class Parent {
+    void display(){
+        System.out.println("Parent method");
+    }
+}
+--------------------------------------------------------------------------------------------------------------------------------
+package MethodOverriding;
+
+public class Child extends Parent {
+
+    void display(){
+       System.out.println("Child method");
+   }
+   
+    void show(){
+        super.display(); // Calls Parent class method
+        display();       // Calls Child class method
+    }
+}
+--------------------------------------------------------------------------------------------------------------------------------
+package MethodOverriding;
+
+public class Main {
+
+    public static void main(String[] args){
+      Child obj = new Child();
+      obj.show();
+    }
+}
+--------------------------------------------------------------------------------------------------------------------------------
+o/p:
+Parent method
+Child method
+
+super.display() calls the display method of parent, while display() without super refers to the child class's display method
