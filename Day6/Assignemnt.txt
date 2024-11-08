@@ -1,0 +1,19 @@
+~ Create an abstract class Appliance with one abstract method turnOn() and one non-abstract method turnOff() that prints "Appliance turned off".
+Create a subclass Fan that extends Appliance and implements the turnOn() method to print "Fan is now on".
+In the main method, create a Fan object and call both turnOn() and turnOff().
+
+~ Create a BankAccount class that has private fields accountNumber and balance.
+Add a constructor to initialize the accountNumber and balance.
+Create methods deposit() and withdraw(), where:
+deposit() adds to the balance.
+withdraw() subtracts from the balance, but only if sufficient funds are available.
+In the main method, create an object of BankAccount, and demonstrate deposit and withdraw operations.
+
+~ Create a Simple Class with Encapsulation:
+Create a class Person with private fields for name and age.
+Provide public getter and setter methods to access and update these fields.
+Write a main method to create a Person object, set the values, and then display them using the getters.
+
+~ Create an abstract class Vehicle with an abstract method fuelType().
+Create a subclass Bike that overrides fuelType() to return "Petrol".
+In main, create a Bike object and call the fuelType() method to print the result.

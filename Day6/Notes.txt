@@ -1,0 +1,111 @@
+Agenda :
+	- Abstraction & Encapsulation
+	- Abstract Classes
+	- Interfaces
+	- Packages
+============================================================================================================
+Abstraction : Hiding the implementation details and showing only the essential features.
+Example      : TV Remote(only buttons are visible, not the internal circuits)
+------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+Encapsulation : Wrapping data(variables) and methods in a single unit(class), restricting direct access to data
+Example            : Medical Capsule(The content are enclosed in a capsule)
+------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+Real-Life Analogy :
+Car Interface : driver operate a car without knowing or understanding how the engine works(Abstraction)
+                           the engine and other mechanical components are encapsulated within the car's body(Encapsulation)
+-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+Abstract Class:
+A class that cannot be instantiated and may contain abstract methods(without a body) and non-abstract methods.
+
+Example: 
+
+//Abstract Class
+abstract class Vehicle{
+			//Abstract Method(No implementation)
+		abstract void start();
+
+			//Non-abstract method (With Implementation)
+		void stop(){
+		System.out.println("Vehicle Stopped");
+ 	}
+}
+
+//Subclass Car extends the abstract class Vehicle
+class Car extends Vehicle{
+			//Providing the implementation of the abstract methods 
+		void start(){
+	System.out.println("Car Started");
+		}
+}
+
+//Main class
+public class Main{
+	public static void main(String[] args){
+		// Create an instance of Car class
+		Car myCar = new Car();
+
+		// Call the start method (from car class)
+		myCar.start();
+
+		// Call the stop method (Inherited from Vehicle class)
+		myCar.stop();
+	}
+}
+
+
+O/P:
+Car Started
+Vehicle Stopped
+-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+Interfaces:
+A completely abstract class with only abstract methods.
+
+Example: 
+//Interface Definition
+interface Animal{
+	//Abstract Method(No implementation)
+	void sound();
+}
+
+//Dog class implements the Animal Interface
+class Dog implements Animal {
+	//providing the implementation of the abstract method
+	public void sound(){
+	System.out.println("Dog Barks");
+	}
+}
+
+public class Main{
+		public static void main(String[] args){	
+//Create an instance of dog
+	Dog myDog = new Dog();
+	// Call the sound method (Defined in Animal, implemented in Dog)
+	myDog.sound();
+	}
+}
+
+O/P : Dog Barks
+-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+Package:
+A mechanism to bundle the related classes and interfaces together
+
+Example:
+package mypack;
+public class MyClass{
+	public void display(){
+	System.out.println("Hello from package")
+	}
+}
+-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+
+
+
+
+
+
+
+
+
+
+
