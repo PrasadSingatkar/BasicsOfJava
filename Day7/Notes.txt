@@ -1,0 +1,137 @@
+~ What are Java Exceptions?
+An exception is an event that disrupts the normal flow of program execution.
+Exception represent runtime issues, such as dividin by zero, accessing an out -of-bound index, or file handling errors.
+--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+~ Difference between error and exception?
+
+Error: 
+These are serious issues beyond the application's contro
+(Like memory leaks, stack overflow)
+they  are not handled in java, as recovery might be impossible
+
+Exception:
+Exceptions are typically application-level issue caused by program mistakes
+Which can be handled to ensure program continuity.
+
+Aspect                              Error                                                   Exception
+Control             Unrecoverable by the application                 Recoverable by application code
+Examples         OutOfMemoryError, StackOverFlowErr         NullPointerExeption, IOException
+Handling           Not possible                                                      Handled with try-catch
+
+--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+~ Exception Hierarchy 
+
++ Throwable
+	+ Error :  for serious issues not handled by application
+		- OutOfMemoryError, StackOverFlowErr 
+	
+	+ Exception : 
+		+Checked Exception : Must be handled at compile-time
+			Ex. : IOException, SQLException
+
+		+Unchecked Exception : Occurs at runtime
+			Ex.  NullPointerException, ArithmeticException
+
+--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+Types of Exceptions: 
++ Built-in Exception :
+		+Checked Exception : Must be handled at compile-time
+			Ex. : IOException, SQLException
+
+		+Unchecked Exception : Occurs at runtime
+			Ex.  NullPointerException, ArithmeticException
++ User-Defined Exception:
+   Custom exception are created by exending Exception class.
+    Useful when built-in exceptions don't suit our needs.
+
+Example:
+class InvalidAgeException extends Exception{
+	public InvalidAgeException(String message){
+		super(message);
+	}
+}
+
+https://docs.oracle.com/en/java/javase/21/docs/api/java.base/java/lang/Exception.html
+
+--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+Methods to print Exception information
+
+1. printStackTrace() : prints detailed information about the exception and its origin
+2. toString()               : Provides a short description of the exception, showing the class name and message
+3. getMessage()       : Displays the message associated with the exception.	
+
+https://docs.oracle.com/en/java/javase/21/docs/api/java.base/java/lang/ArithmeticException.html  (ArithmeticException)
+	
+EXAMPLE: 
+
+public class Example {
+    public static void main(String[] args ){
+        try{
+            int result = 10/0;
+        } catch (ArithmeticException e){
+            e.printStackTrace();                 //Prints Stack trace 
+            System.out.println(e.toString());    // class name & message
+            System.out.println(e.getMessage());  // Just a message
+        }
+
+    }
+}
+
+--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+public class Arithmetic {
+    public static void main(String[] args ){
+        try{
+            int division = 10/0;
+        } catch(ArithmeticException e ){
+            System.out.println("Division by zero is not allowed");
+        }
+    }
+}
+--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+public void readFile(String filepath){
+	try{
+		FileReader file = new FileReader(filepath);
+		BufferedReader fileInput = new BufferedReader(file);
+		System.out.println(fileInput.readLine()); 
+		fileInput.close();
+	} catch(FileNotFoundException e) {
+		System.out.println("File not found : " + e.getMessage());
+	} catch(IOException e){
+		System.out.println("Error reading this file : " + e.getMessage());
+		} 
+}
+--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+Finally : 
+The finally block is optional and used for code that must run regardless of an exception's occurrence, such as closing resources.
+
+EXAMPLE:
+try {
+    int result = 10 / 2;
+    System.out.println("Result: " + result);
+} catch (ArithmeticException e) {
+    System.out.println("Exception caught: " + e);
+} finally {
+    System.out.println("This is the finally block, executed always.");
+}
+
+// Whether or not an exception is thrown, the finally block executes, ensuring that necessary cleanup (e.g., releasing resources) occurs.
+--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+Assignment:
+Just Read about exceptions and try to understand by implementing it with different examples.
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
