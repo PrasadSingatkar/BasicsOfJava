@@ -1,0 +1,105 @@
+Question 1: Student Management System
+Create a simple Student Management System with the following requirements:
+1. Student class with attributes studentId, name, age, and a method to display student 
+details.
+2. Create a method to set the student's age, and use exception handling to prevent ages 
+less than 5 or greater than 100.
+3. In the main method, create instances of students, attempt to set invalid ages, and catch 
+exceptions for invalid age input using try-catch.
+
+=================================================================================================
+package StudentManagementSystem;
+
+public class Student {
+    // private attributes to ensure encapsulation
+    private int studentId;
+    private String name;
+    private int age;
+
+    // Constructor to initialize student attributes
+    public Student(int studentId,String name){
+        this.studentId = studentId;
+        this.name = name;
+        // Initially, age is set to 0, which we are going to update with setter
+        this.age=0;
+    }
+
+    // Method to display student details
+    public void displayDetails(){
+        System.out.println("Student ID : " + studentId);
+        System.out.println("Name       : " + name);
+        System.out.println("Age       : " + age);
+    }
+
+    // Setter method for age with exception handling for age validation
+    public void setAge(int age) throws IllegalArgumentException{
+        // Check if age is valid (between 5 and 100)
+        if(age < 5 || age > 100){
+            // Throw an exception if age is invalid
+            throw new IllegalArgumentException("Age must be between 5 and 100");
+        }
+        this.age= age ;  // set the age if it is valid
+    }
+}
+=================================================================================================
+package StudentManagementSystem;
+
+public class StudentManagementSystem {
+    public static void main(String[] args) {
+        // creating instances of Student with ID and Name
+        Student student1 = new Student(100, "Krishna");
+        Student student2 = new Student(101, "Gopal");
+
+        // Trying to set valid and invalid ages with try-catch block
+        try {
+            student1.setAge(4); //Invalid age - it should trigger exception
+        } catch (IllegalArgumentException e) {
+            System.out.println("Error setting age :  " + e.getMessage());
+        }
+
+        try {
+            student2.setAge(25); // Valid age
+            System.out.println("Age set successfully");
+        } catch(IllegalArgumentException e) {
+            System.out.println("Error setting age for student2 :" + e.getMessage());
+        }
+
+        //Display the student details
+        System.out.println("\nStudent 1 details");
+        student1.displayDetails();
+
+        System.out.println("\nStudent 2 details");
+        student2.displayDetails();
+    }
+}
+
+=================================================================================
+1. throw Keyword : 
+to explicitly throw an exception in a method or block of code.
+to manually raise an exception when some specific condition occurs.
+
+Syntax :  throw new IllegalArgumentException("Age must be between 5 and 100");
+
+=================================================================================
+2. throws Keyword : 
+the throws keyword is used in a method declaration to indicate that a method may throw certain types of exceptions.
+
+Syntax : public void setAge(int age) throws IllegalArgumentException
+=================================================================================
+https://docs.oracle.com/en/java/javase/21/docs/api/java.base/java/lang/Throwable.html
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
