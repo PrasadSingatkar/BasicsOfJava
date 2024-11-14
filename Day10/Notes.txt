@@ -1,0 +1,9 @@
+Q - Create a simple Library Management System with the following requirements:
+- Book class with attributes bookId, title, author, price, and a method to display book details.
+- Create a method to set the book's price, and use exception handling to ensure the price is a positive number and not greater than $1,000.
+- In the main method, create instances of books, attempt to set invalid prices, and catch exceptions for invalid price input using try-catch.
+
+==================================================================================================
+Solution : 
+==================================================================================================
+Collection Framework : 
