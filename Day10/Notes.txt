@@ -7,3 +7,166 @@ Q - Create a simple Library Management System with the following requirements:
 Solution : 
 ==================================================================================================
 Collection Framework : 
+==================================================================================================
+Framework : readymade implementations of standard design patterns 
+Collection framework encapsulates ready made implementation of algorithms.
+gives us the readymade implementation of different data structures
+==================================================================================================
+Iterable :
+the root interface of collection framework
+
+Collection :
+Extends Itrable and serves as the base interface for various collection types.
+It defines standard operations like adding, removing, and checking the size of the collection.
+
+List : 
+Extends collection and represents an ordered collection.
+It allows duplicate elements and gives access to elements by their index.
+==================================================================================================
+List Implementations:
+1. ArrayList
+2.LinkedList
+3.Vector
+==================================================================================================
+1. ArrayList :
+
+Characteristics:
+1 . Dynamically Resizable Array
+2.  Allows fast random access (index based)
+==================================================================================================
+package ArrayList;
+
+import java.util.ArrayList;
+
+public class ArrayListExample {
+    public static void main(String[] args){
+        ArrayList<String> names = new ArrayList<>();
+
+        //Adding elements
+        names.add("Krishna");
+        names.add("Govind");
+        names.add("Gopal");
+
+        //Accessing  elements by index
+        System.out.println("First Name : " + names.get(0));
+
+        // Iterating elements by index
+        for(String name : names){
+            System.out.println(name);
+        }
+
+        // Removing an element
+        names.remove("Govind");
+
+        System.out.println("After removing an element  : " + names);
+    }
+}
+==================================================================================================
+Methods:
+add(E e) : Adds an element to the list
+get(int index) : returns the element at a specified index
+remove(int index) : removes an element
+size() : returns the number of elements
+  -> int size = names.size();
+contains(Object o) : Checks if the list contains an element
+ -> boolean hasName = names.contains("Gopal");
+clear() - Removes all the elements from the list.
+ -> names.clear();
+
+https://docs.oracle.com/en/java/javase/21/docs/api/java.base/java/util/ArrayList.html
+==================================================================================================
+LinkedList : 
+
+Characteristics:
+ - Better for insertion /deletion operations as no resizing is needed.
+ - implements List and Dequeue
+ - Doubly-Linked list structure 
+
+==================================================================================================
+package LinkedList;
+
+import java.util.LinkedList;
+
+public class LinkedListExample {
+    public static void main(String[] args){
+        LinkedList<String> tasks = new LinkedList<>();
+
+        //Adding elements
+        tasks.add("Read");
+        tasks.add("Write");
+        tasks.add("Exercise");
+
+        //Adding elements at specified positions
+        tasks.addFirst("Wake Up");
+        tasks.addLast("Sleep");
+
+        //Accessing elements at first
+        System.out.println("First task is " + tasks.getFirst());
+
+        // To iterate
+        for(String task : tasks){
+            System.out.println(task);
+        }
+
+        System.out.println("LinkedList : "+ tasks);
+
+        // Removing Elements
+        tasks.removeFirst();
+        tasks.removeLast();
+
+        System.out.println("After Removal : "+ tasks);
+    }
+}
+==================================================================================================
+Methods :
+addFirst(E e) - adds an element at the beginning
+addLast(E e) - adds an element at the end
+getFirst() / getLast() - retrieves the first or last element
+removeFirst() / removeLast() - Removes the first or last element
+add(int index, E element) - Inserts an element at specified position
+
+==================================================================================================
+ - Vector
+Characteristics :
+~ Similar to ArrayList but synchronized (thread-safe)
+==================================================================================================
+package Vector;
+
+import java.util.Vector;
+
+public class VectorExample {
+    public static void main(String[] args) {
+        Vector<Integer> numbers = new Vector<>();
+
+        //Adding elements
+        numbers.add(10);
+        numbers.add(20);
+        numbers.add(30);
+
+        //Accessing the elements by index
+        System.out.println("First number is  " + numbers.get(0));
+
+        //Iterate through the vector
+        for(Integer number : numbers){
+            System.out.println(number);
+        }
+
+        //Removing an element
+        numbers.remove((Integer) 20);
+
+        System.out.println("After Removal : "+ numbers);
+    }
+}
+==================================================================================================
+Methods:
+size() : returns the size of the vector
+capacity() : Returns the capacity of the vector
+isEmpty() :Checks if the vector is empty
+
+
+
+
+
+
+
+
