@@ -1,0 +1,4 @@
+Agenda :
+- Revision (Vector vs ArrayList)
+- ArrayList Constructors
+- Set (HashSet & LinkedHashSet)
