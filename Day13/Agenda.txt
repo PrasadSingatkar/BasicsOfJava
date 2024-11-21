@@ -1,0 +1,5 @@
+Agenda: 
+1. Attendance
+2. Java List & Set (Q&A)
+3. CRUD Employee Management System
+4. TreeSet and PriorityQueue
