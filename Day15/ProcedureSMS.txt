@@ -1,0 +1,18 @@
+Step 1 : 
+Create a Student class.
+Why getters & setters?
+Why toString?
+
+Step 2 :
+Create Interface StudentOperations
+Why interface?
+loose coupling?
+
+step 3:
+create an implementation class StudentOperationsImpl
+
+step 4:
+create an StudentManagementSystem class 
+with main() method 
+
+
