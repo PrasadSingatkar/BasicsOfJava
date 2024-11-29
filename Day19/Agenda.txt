@@ -1,0 +1,5 @@
+- Thread Lifecycle
+- Enumeration & Iterator
+
+Main Thread -> Running state  -> Waiting State(at join()) -> Running state -> terminated
+Custom thread -> New ->Runnable -> Running -> Timed-Wait state ->Running ->Terminated
