@@ -1,0 +1,12 @@
+Create a Vector of numbers from 1 to 10. Write two methods: one using an Enumeration to traverse the Vector and another using an Iterator. Compare their outputs and explain in comments how they differ.
+
+Write a program where you add integers to a Vector. Use Enumeration to print all the elements. Then, use an Iterator to remove numbers greater than 100 and print the updated list.
+
+Write a Java program to create an ArrayList of integers. Use an Iterator to remove all numbers greater than 50.
+Example Input: {45, 60, 30, 75, 50}
+Expected Output: {45, 30, 50}
+
+Create a Vector of integers containing both odd and even numbers. Use an Enumeration to count and display how many even numbers are in the list.
+Example Input: {10, 15, 20, 25, 30}
+Expected Output: Number of even numbers: 3
+
